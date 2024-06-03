@@ -1,0 +1,21 @@
+{
+  "name": "xui",
+  "private": true,
+  "version": "0.0.1",
+  "description": "vue ui组件",
+  "main": "dist/xui.umd.cjs",
+  "type": "module",
+  "author": "xiehou",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.4.21"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.4",
+    "vite": "^5.2.0"
+  }
+}
