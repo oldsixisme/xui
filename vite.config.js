@@ -5,12 +5,14 @@ import { resolve } from 'path'
 
 export default defineConfig({
   plugins: [vue()],
+  target: 'es2015',
   build: {
     lib: {
       entry: resolve(__dirname, './src/index.js'),
       name: 'xui',
       // the proper extensions will be added
-      fileName: 'xui'
+      fileName: 'xui',
+      formats: ['es']
     },
     rollupOptions: {
       context: 'globalThis',
