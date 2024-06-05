@@ -45,8 +45,8 @@
 <template>
 
   
-  <tool-bar-slot v-if="renderType === 'slot'"  :tool="tool"></tool-bar-slot>
-  <div v-else class="toolItem" @click="handleClick">
+  <!-- <tool-bar-slot v-if="renderType === 'slot'"  :tool="tool"></tool-bar-slot> -->
+  <div  class="toolItem" @click="handleClick">
     <Icon v-if="tool.icon" :type="tool.icon" :style="'background-color:'+tool.icolor+' !important;'" />
     {{tool.title}} 
   </div>
@@ -54,9 +54,10 @@
 </template>
 
 <script>
-import ToolBarSlot from './slot';
+// import ToolBarSlot from './slot';
 export default {
-  components:{ToolBarSlot},
+  name: 'ToolItem',
+  // components:{ToolBarSlot},
   inject:['toolRoot'],
   data(){
     return {

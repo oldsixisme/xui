@@ -18,6 +18,7 @@
 <script>
 import ToolItem from "./ToolItem.vue";
 export default {
+  name: "ToolBar",
   provide(){
     return {
       toolRoot: this

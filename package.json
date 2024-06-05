@@ -1,9 +1,9 @@
 {
   "name": "his-view-ui",
   "private": false,
-  "version": "0.0.2",
+  "version": "0.0.7",
   "description": "vue ui组件",
-  "main": "dist/xui.js",
+  "main": "dist/xui.min.esm.js",
   "type": "module",
   "author": "xiehou",
   "scripts": {
@@ -13,10 +13,13 @@
   },
   "license": "MIT",
   "dependencies": {
-    "vue": "^3.4.21"
+    
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",
     "vite": "^5.2.0"
+  },
+  "peerDependencies": {
+    "vue": "^3.4.21"
   }
 }

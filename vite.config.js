@@ -1,30 +1,53 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import { resolve } from 'path'
+import {defineConfig} from 'vite';
+import vue from '@vitejs/plugin-vue';
+import path from 'path';
 
 
-export default defineConfig({
-  plugins: [vue()],
-  target: 'es2015',
-  build: {
-    lib: {
-      entry: resolve(__dirname, './src/index.js'),
-      name: 'xui',
-      // the proper extensions will be added
-      fileName: 'xui',
-      formats: ['es']
-    },
-    rollupOptions: {
-      context: 'globalThis',
-      preserveEntrySignatures: 'strict',
-      // 确保外部化处理那些你不想打包进库的依赖
-      external: ['vue'],
-      output: {
-        // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
-        globals: {
-          vue: 'Vue'
+const config = defineConfig({
+    plugins: [vue()],
+    target: 'es2015',
+    build: {
+        outDir: path.resolve(__dirname, './dist'),
+        lib: {
+            entry: path.resolve(__dirname, './src/index.js'),
+            name: 'his-view-ui'
+        },
+        rollupOptions: {
+            context: 'globalThis',
+            preserveEntrySignatures: 'strict',
+            external: ['vue'],
+            output: [
+                {
+                    name: 'xui',
+                    format: 'umd',
+                    exports: 'named',
+                    sourcemap: false,
+                    entryFileNames: 'xui.min.js',
+                    chunkFileNames: '[name].js',
+                    assetFileNames: '[name].[ext]',
+                    namespaceToStringTag: true,
+                    inlineDynamicImports: false,
+                    manualChunks: undefined,
+                    globals: { vue: 'Vue' }
+                },
+                {
+                    format: 'es',
+                    exports: 'named',
+                    sourcemap: false,
+                    entryFileNames: 'xui.min.esm.js',
+                    chunkFileNames: '[name].js',
+                    assetFileNames: '[name].[ext]',
+                    namespaceToStringTag: true,
+                    inlineDynamicImports: false,
+                    manualChunks: undefined,
+                    globals: { vue: 'Vue' }
+                }
+            ]
         }
-      }
+    },
+    resolve: {
+        extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue']
     }
-  }
-})
+});
+
+export default config;
